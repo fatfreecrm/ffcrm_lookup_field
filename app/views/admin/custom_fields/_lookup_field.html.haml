@@ -1,0 +1,48 @@
+
+= f.fields_for :settings, @field do |s|
+
+  %table
+    %tr
+      %td
+        .label.top.req
+          = image_tag "info_tiny.png", :title => t('field_types.lookup.lookup_class_name.hint'), :class => "tooltip-icon"
+          = s.label :lookup_class_name, t('field_types.lookup.lookup_class_name.title')
+        = s.text_field :lookup_class_name
+      %td= spacer
+      %td
+        .label.top.req
+          = image_tag "info_tiny.png", :title => t('field_types.lookup.lookup_field.hint'), :class => "tooltip-icon"
+          = s.label :lookup_field, t('field_types.lookup.lookup_field.title')
+        = s.text_field :lookup_field
+
+    %tr
+      %td
+        .label.top.req
+          = image_tag "info_tiny.png", :title => t('field_types.lookup.lookup_method.hint'), :class => "tooltip-icon"
+          = s.label :lookup_method, t('field_types.lookup.lookup_method.title')
+        = s.text_field :lookup_method
+      %td= spacer
+      %td
+        = s.check_box :autocomplete
+        = s.label :autocomplete, t('field_types.lookup.autocomplete.title')
+        %br
+        =# s.check_box :multiselect
+        =# s.label :multiselect, t('field_types.lookup.multiselect.title')
+        
+    %tr
+      %td
+        = f.label :hint, :class => "label top"
+        = f.text_field :hint
+      %td= spacer
+      %td
+        = f.label :placeholder, :class => "label top"
+        = f.text_field :placeholder
+        
+    %tr
+      %td
+        .label.top
+        = f.check_box :required
+        = f.label :required
+        %br
+        = f.check_box :disabled
+        = f.label :disabled

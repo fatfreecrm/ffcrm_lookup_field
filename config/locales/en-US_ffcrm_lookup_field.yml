@@ -1,0 +1,19 @@
+en-US:
+  # Form field types
+  #----------------------------------------------------------------------------
+  field_types:
+    lookup:
+      title: "Lookup field"
+      lookup_class_name:
+        title: Lookup class name
+        hint: Name of Active Record table to lookup (e.g. accounts)
+      lookup_field:
+        title: Lookup field
+        hint: Name of table column to use as the key to retreive values (e.g. id)
+      lookup_method:
+        title: Lookup method
+        hint: Name of instance method to retrieve the value. (e.g. name)
+      autocomplete:
+        title: Autocomplete
+      multiselect:
+        title: Multiselect

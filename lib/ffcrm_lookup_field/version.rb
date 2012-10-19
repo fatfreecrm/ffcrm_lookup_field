@@ -1,0 +1,3 @@
+module FfcrmLookupField
+  VERSION = "0.0.1"
+end
