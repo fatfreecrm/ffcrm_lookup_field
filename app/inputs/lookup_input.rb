@@ -27,38 +27,31 @@ class LookupInput < SimpleForm::Inputs::CollectionSelectInput
   end
 
   private
-  
+
   def add_placeholder!
     input_html_options['data-placeholder'] = input_html_options[:placeholder] unless input_html_options[:placeholder].blank?
   end
-  
+
   def add_autocomplete!
     if cf.autocomplete?
       controller = cf.lookup_class_name.tableize.pluralize
       input_html_options['data-autocomplete-url'] = Rails.application.routes.url_for(:action => 'auto_complete', :controller => controller, :format => :json, :only_path => true)
       input_html_options[:class] << 'autocomplete'
     else
-      input_html_options[:class] << 'chzn-select'
+      #~ input_html_options[:class] << 'chzn-select'
     end
   end
-  
+
   def add_multiselect!
     input_html_options['multiple'] = 'multiple' if cf.multiselect?
   end
-  
+
   # Get values to show.
   #   - order by 'method' if it is a column, otherwise use field
   #   - if using autocomplete then limit to 100 initial entries.
   #------------------------------------------------------------------------------
   def lookup_values
-    klass = cf.lookup_class
-    method = cf.lookup_method
-    field = cf.lookup_field
-    values = klass.my
-    values = values.limit(100) if cf.autocomplete?
-    values = object.attributes.keys.include?(method.to_s) ? values.order(method.to_s) : values.order(field.to_s)
-    values.map{|item| [item.send(method), item.send(field)]}.
-      sort_by{|x,y| x[0] <=> y[0]}
+    cf.lookup_values_for_selection
   end
 
   def cf

@@ -26,9 +26,9 @@
         = s.check_box :autocomplete
         = s.label :autocomplete, t('field_types.lookup.autocomplete.title')
         %br
-        =# s.check_box :multiselect
-        =# s.label :multiselect, t('field_types.lookup.multiselect.title')
-        
+        = s.check_box :multiselect
+        = s.label :multiselect, t('field_types.lookup.multiselect.title')
+
     %tr
       %td
         = f.label :hint, :class => "label top"
@@ -37,7 +37,7 @@
       %td
         = f.label :placeholder, :class => "label top"
         = f.text_field :placeholder
-        
+
     %tr
       %td
         .label.top
