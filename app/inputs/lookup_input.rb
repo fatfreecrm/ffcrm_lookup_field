@@ -23,6 +23,7 @@ class LookupInput < SimpleForm::Inputs::CollectionSelectInput
     add_placeholder!
     add_autocomplete!
     add_multiselect!
+    add_width!
     @builder.select(attribute_name, lookup_values, input_options, input_html_options)
   end
 
@@ -38,12 +39,17 @@ class LookupInput < SimpleForm::Inputs::CollectionSelectInput
       input_html_options['data-autocomplete-url'] = Rails.application.routes.url_for(:action => 'auto_complete', :controller => controller, :format => :json, :only_path => true)
       input_html_options[:class] << 'autocomplete'
     else
-      #~ input_html_options[:class] << 'chzn-select'
+      input_html_options[:class] << 'chzn-select'
     end
   end
 
   def add_multiselect!
     input_html_options['multiple'] = 'multiple' if cf.multiselect?
+  end
+
+  def add_width!
+    width = cf.multiselect? ? 'width:320px' : 'width:160px'
+    input_html_options['style'] = (input_html_options['style'] || '') + " #{width};"
   end
 
   # Get values to show.
@@ -61,5 +67,7 @@ class LookupInput < SimpleForm::Inputs::CollectionSelectInput
   def lookup_values_for_text_field
     lookup_values.map(&:first).join(', ')
   end
+
+  ActiveSupport.run_load_hooks(:fat_free_crm_lookup_input, self)
 
 end
