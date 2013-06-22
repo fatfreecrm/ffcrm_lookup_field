@@ -11,8 +11,11 @@ module FfcrmLookupField
       end
 
       #
-      # Serialize existing custom lookup fields
-      ActiveSupport.on_load(:active_record) { FfcrmLookupField.serialize_fields! }
+      # Turn on serialization for multiselect fields at bootup
+      ActiveSupport.on_load(:active_record) do
+        # If this code is run during bootup, the Fields table might not exist due to empty schema.
+        Field.where(:as => 'lookup').map(&:apply_serialization) if Field.table_exists?
+      end
 
     end
 

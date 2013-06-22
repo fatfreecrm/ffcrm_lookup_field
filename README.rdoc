@@ -1,9 +1,0 @@
-= FfcrmLookupField
-
-A lookup field is a select/multi-select field that gets its data dynamically from a Rails model / or potentially any ruby class.
-
-This plugin (for Fat Free CRM) provides the ability to create Lookup Fields in the Admin -> Custom Fields section.
-
-Important notes
-
-* After creating a custom lookup field, it is important to restart the rails server before adding any data to models. This is because the serialization and mutator machinery needs to be adding on a per field basis. This restriction should be removed in the future versions.

@@ -17,7 +17,7 @@ FactoryGirl.define do
   factory :field_group do
     klass_name          { FactoryGirl.generate(:klass_name) }
     label               { FactoryGirl.generate(:field_label) }
-    tag                 
+    tag
   end
 
 
@@ -32,8 +32,13 @@ FactoryGirl.define do
     created_at          { FactoryGirl.generate(:time) }
   end
 
-
-  factory :custom_field do
-    type    "CustomField"
+  factory :custom_field, :parent => :field, :class => 'CustomField' do
+    type "CustomField"
   end
+
+  factory :custom_field_lookup, :parent => :field, :class => 'CustomFieldLookup' do
+    type "CustomFieldLookup"
+    as    "lookup"
+  end
+
 end
