@@ -36,8 +36,8 @@ class LookupInput < SimpleForm::Inputs::CollectionSelectInput
   def add_autocomplete!
     if cf.autocomplete?
       controller = cf.lookup_class_name.tableize.pluralize
-      input_html_options['data-autocomplete-url'] = Rails.application.routes.url_for(:action => 'auto_complete', :controller => controller, :format => :json, :only_path => true)
-      input_html_options[:class] << 'autocomplete'
+      input_html_options['data-url'] = Rails.application.routes.url_for(:action => 'auto_complete', :controller => controller, :format => :json, :only_path => true)
+      input_html_options[:class] << 'ajax_chosen'
     else
       input_html_options[:class] << 'chzn-select'
     end
