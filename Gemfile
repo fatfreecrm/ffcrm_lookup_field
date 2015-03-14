@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in ffcrm_lookup_field.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -14,6 +14,7 @@ gem "jquery-rails"
 # your gem to rubygems.org.
 
 # To use debugger
-gem 'byebug' unless ENV['CI']
+gem "byebug" unless ENV["CI"]
 
-gem 'fat_free_crm', :git => 'git://github.com/fatfreecrm/fat_free_crm.git'
+gem "fat_free_crm", github: "fatfreecrm/fat_free_crm"
+gem "factory_girl_rails"

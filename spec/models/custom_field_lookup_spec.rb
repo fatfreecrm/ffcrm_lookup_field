@@ -4,9 +4,9 @@ describe CustomFieldLookup do
 
   describe "apply_serialization" do
 
-    let(:field) { FactoryGirl.create(:custom_field_lookup, :name => 'cf_lookup') }
+    let(:settings) { {"multiselect"=> "1"}.with_indifferent_access }
+    let(:field) { FactoryGirl.create(:custom_field_lookup, name: 'cf_lookup', settings: settings) }
     let(:klass) { field.field_group.klass_name.constantize }
-    before      { allow(field).to receive(:multiselect?).and_return(true) }
 
     it "should serialize multiple choice lookup fields" do
       expect(klass.serialized_attributes).not_to include(field.name)
