@@ -16,4 +16,4 @@ gem "jquery-rails"
 # To use debugger
 gem 'byebug' unless ENV['CI']
 
-gem 'fat_free_crm', :git => 'git://github.com/fatfreecrm/fat_free_crm.git'
+gem 'fat_free_crm'
