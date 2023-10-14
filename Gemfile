@@ -1,19 +1,12 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
 
-# Declare your gem's dependencies in ffcrm_lookup_field.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
 gemspec
 
-# jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem "fat_free_crm", path: "../fat_free_crm" #git: 'https://github.com/fatfreecrm/fat_free_crm.git'
+gem 'responds_to_parent', git: 'https://github.com/CloCkWeRX/responds_to_parent.git', branch: 'patch-2' # Temporarily pointed at git until https://github.com/zendesk/responds_to_parent/pull/7 is released
+gem 'acts_as_commentable', git: 'https://github.com/fatfreecrm/acts_as_commentable.git', branch: "rails-61"
 
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
-
-# To use debugger
-gem "byebug" unless ENV["CI"]
-
-gem 'fat_free_crm'
+group :development, :test do
+  gem "jquery-rails" # jquery-rails is used by the dummy application
+  gem "byebug" unless ENV["CI"]
+end
