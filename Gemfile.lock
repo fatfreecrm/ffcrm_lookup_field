@@ -119,7 +119,7 @@ GEM
     benchmark (0.4.1)
     bigdecimal (3.3.0)
     builder (3.3.0)
-    byebug (11.1.3)
+    byebug (12.0.0)
     cancancan (3.6.1)
     chronic (0.10.2)
     coffee-script-source (1.12.2)
